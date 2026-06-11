@@ -557,7 +557,7 @@ const BOOKS = [
   { id: 65, cat: 'middle', type: '교과서', subject: '영어', area: '자습서',
     title: '중학교 영어 1 자습서 & 평가문제집 (박준언)',
     author: 'YBM 편집부', price: 15000, originalPrice: 17000, badge: 'best',
-    img: 'images/middle-english-1-workbook.jpg',
+    img: 'images/middle-english-1-workbook.png',
     publisher: 'YBM', date: '2024.01.01',
     kyoboUrl: 'https://www.yes24.com/Product/UsedShopHub/Hub/179615715',
     desc: 'YBM(박준언) 중학교 영어 1학년 교과서 완벽 분석. 내신 1등급을 위한 자습서 & 평가문제집.' },
