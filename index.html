@@ -362,7 +362,7 @@
           <div class="dropdown-body">
             <a href="resources.html?tab=materials" class="mega-group-title">교재자료실</a>
             <a href="resources.html?tab=study&stab=vocab" class="mega-group-title">스터디존</a>
-            <a href="resources.html?tab=study&stab=vocab" class="mega-sub-link mega-only">어휘출제마법사</a>
+            <a href="resources.html?tab=study&stab=vocab" class="mega-sub-link mega-only">온라인어휘학습기</a>
             <a href="resources.html?tab=study&stab=grammar" class="mega-sub-link mega-only">문법예문뱅크</a>
             <a href="resources.html?tab=study&stab=daily" class="mega-sub-link mega-only">데일리외국어</a>
             <a href="resources.html?tab=study&stab=mp3" class="mega-sub-link mega-only">MP3 바로듣기</a>
@@ -530,7 +530,7 @@
         <div class="shortcut-icon c-red">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <span class="shortcut-label">어휘출제마법사</span>
+        <span class="shortcut-label">온라인어휘학습기</span>
       </a>
       <a href="events.html" class="shortcut-item">
         <div class="shortcut-icon c-orange">
@@ -579,14 +579,22 @@
             <div class="section-eyebrow">NEW RELEASE</div>
             <h2 class="section-title">신간 교재</h2>
           </div>
-          <a href="books.html?sort=new" class="view-all">더보기 →</a>
+          <div class="new-nav">
+            <button class="new-nav-btn" id="newPrev" onclick="moveNewSlide(-1)">&#8249;</button>
+            <span class="new-nav-pager" id="newPager">1 / 1</span>
+            <button class="new-nav-btn" id="newNext" onclick="moveNewSlide(1)">&#8250;</button>
+          </div>
         </div>
-        <div id="new-spotlight"></div>
+        <div class="new-slider-wrap" id="newSliderWrap">
+          <div class="new-slider-track" id="newSliderTrack"></div>
+        </div>
 
         <!-- 큐레이션 버튼 -->
         <a href="resources.html?tab=howto&sub=curation" class="curation-btn">
-          <span class="curation-btn-label">📋 큐레이션</span>
-          <span class="curation-btn-desc">단계별 교재 추천 로드맵 보기</span>
+          <div class="curation-btn-inner">
+            <span class="curation-btn-label">큐레이션</span>
+            <span class="curation-btn-desc">초등부터 고등까지, YBM 전체 교재를 한눈에</span>
+          </div>
           <span class="curation-btn-arrow">→</span>
         </a>
 
@@ -659,43 +667,54 @@
 const bestBooks = BOOKS.filter(b => b.badge === 'best');
 const newBooks  = BOOKS.filter(b => b.badge === 'new' && b.id !== 27);
 
-document.getElementById('best-elem').innerHTML = bestBooks.filter(b=>b.cat==='elementary').slice(0,5).map(renderBookCard).join('') || '<p style="color:var(--muted);padding:20px">해당 교재가 없습니다.</p>';
-document.getElementById('best-mid').innerHTML  = bestBooks.filter(b=>b.cat==='middle').slice(0,5).map(renderBookCard).join('') || '<p style="color:var(--muted);padding:20px">해당 교재가 없습니다.</p>';
-document.getElementById('best-high').innerHTML = bestBooks.filter(b=>b.cat==='high').slice(0,5).map(renderBookCard).join('') || '<p style="color:var(--muted);padding:20px">해당 교재가 없습니다.</p>';
+const bestExclude = [63, 65];
+document.getElementById('best-elem').innerHTML = bestBooks.filter(b=>b.cat==='elementary'&&!bestExclude.includes(b.id)).slice(0,4).map(renderBookCard).join('') || '<p style="color:var(--muted);padding:20px">해당 교재가 없습니다.</p>';
+document.getElementById('best-mid').innerHTML  = bestBooks.filter(b=>b.cat==='middle'&&!bestExclude.includes(b.id)).slice(0,4).map(renderBookCard).join('') || '<p style="color:var(--muted);padding:20px">해당 교재가 없습니다.</p>';
+document.getElementById('best-high').innerHTML = bestBooks.filter(b=>b.cat==='high'&&!bestExclude.includes(b.id)).slice(0,4).map(renderBookCard).join('') || '<p style="color:var(--muted);padding:20px">해당 교재가 없습니다.</p>';
 
-// 신간 스포트라이트: 가장 최근 출시 교재 1권
-const spotlightBook = newBooks.slice().sort((a,b)=>{
+// 신간 슬라이더 (최대 3권, 최신순)
+const newSlideBooks = newBooks.slice().sort((a,b)=>{
   const da = a.date ? new Date(a.date.replace(/\./g,'-')) : 0;
   const db = b.date ? new Date(b.date.replace(/\./g,'-')) : 0;
   return db - da;
-})[0];
-if (spotlightBook) {
-  const sInfo = CAT_INFO[spotlightBook.cat];
-  const sTags = spotlightBook.tags || [];
-  const sHasMp3 = sTags.some(t => t.includes('MP3'));
-  document.getElementById('new-spotlight').innerHTML = `
-    <div class="nsc-card" onclick="location.href='book-detail.html?id=${spotlightBook.id}'">
-      <div class="nsc-cover-wrap">
-        ${spotlightBook.img
-          ? `<img src="${spotlightBook.img}" alt="${spotlightBook.title}" class="nsc-cover-img">`
-          : `<div class="nsc-cover-placeholder">${sInfo.emoji}</div>`}
-        <span class="nsc-badge">NEW</span>
+}).slice(0,3);
+
+let newSlideIdx = 0;
+
+function renderNscCard(book) {
+  const info = CAT_INFO[book.cat];
+  const hasMp3 = (book.tags||[]).some(t=>t.includes('MP3'));
+  return `<div class="nsc-card" onclick="location.href='book-detail.html?id=${book.id}'">
+    <div class="nsc-cover-wrap">
+      ${book.img ? `<img src="${book.img}" alt="${book.title}" class="nsc-cover-img">` : `<div class="nsc-cover-placeholder">${info.emoji}</div>`}
+      <span class="nsc-badge">NEW</span>
+    </div>
+    <div class="nsc-body">
+      <div class="nsc-meta-row">
+        <span class="book-cat-tag ${info.tagClass}">${info.label} · ${book.subject}</span>
+        ${book.date ? `<span class="nsc-date">${book.date}</span>` : ''}
       </div>
-      <div class="nsc-body">
-        <div class="nsc-meta-row">
-          <span class="book-cat-tag ${sInfo.tagClass}">${sInfo.label} · ${spotlightBook.subject}</span>
-          ${spotlightBook.date ? `<span class="nsc-date">${spotlightBook.date}</span>` : ''}
-        </div>
-        <div class="nsc-title">${spotlightBook.title}</div>
-        <div class="nsc-author">${spotlightBook.author}</div>
-        ${spotlightBook.desc ? `<div class="nsc-desc">${spotlightBook.desc}</div>` : ''}
-        <div class="nsc-mats">
-          ${sHasMp3 ? '<span class="mat-pill mp3">🎧 MP3</span>' : ''}
-          <span class="mat-pill">📄 학습자료</span>
-        </div>
+      <div class="nsc-title">${book.title}</div>
+      <div class="nsc-author">${book.author}</div>
+      ${book.desc ? `<div class="nsc-desc">${book.desc}</div>` : ''}
+      <div class="nsc-mats">
+        ${hasMp3 ? '<span class="mat-pill mp3">🎧 MP3</span>' : ''}
+        <span class="mat-pill">📄 학습자료</span>
       </div>
     </div>
-  `;
+  </div>`;
+}
+
+function moveNewSlide(dir) {
+  const total = newSlideBooks.length;
+  newSlideIdx = (newSlideIdx + dir + total) % total;
+  document.getElementById('newSliderTrack').style.transform = `translateX(-${newSlideIdx * 100}%)`;
+  document.getElementById('newPager').textContent = `${newSlideIdx + 1} / ${total}`;
+}
+
+if (newSlideBooks.length) {
+  document.getElementById('newSliderTrack').innerHTML = newSlideBooks.map(renderNscCard).join('');
+  document.getElementById('newPager').textContent = `1 / ${newSlideBooks.length}`;
 }
 
 // ── 비디오 캐러셀 ──

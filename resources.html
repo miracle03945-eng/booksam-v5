@@ -1253,9 +1253,6 @@
             <span class="vwiz-type-sub">(학습/테스트/수업 모드 지원)</span>
           </button>
         </div>
-        <div class="vwiz-footer">
-          <button class="vwiz-next-btn" onclick="vwizNext()">다음 단계 →</button>
-        </div>
       </div>
       <!-- STEP 2 -->
       <div id="vwizStep2" style="display:none;">
@@ -2476,7 +2473,12 @@ function mp3Next() { if (mp3CurIdx < mp3Tracks.length - 1) mp3PlayTrack(mp3CurId
     const targetStab = _initStab || 'vocab';
     const stabBtn = document.querySelector(`[data-stab="${targetStab}"]`);
     if (stabBtn) switchStudyTab(stabBtn);
-    else initVocaList(); // 기본 온라인어휘학습기
+    else initVocaList();
+    const vocaBookId = getParam('vocaBook');
+    if (vocaBookId) {
+      const book = BOOKS.find(b => String(b.id) === vocaBookId);
+      if (book) setTimeout(() => openVocaWizard(book.id), 150);
+    }
   }
 })();
 

@@ -516,7 +516,13 @@ body.hero-page .topbar-ytutpr{color:white;background:rgba(255,255,255,.26);borde
 .best-cat-row:nth-child(3) .best-cat-label{border-bottom-color:#2e7d32;}
 .best-cat-books{grid-template-columns:repeat(4,1fr)!important;gap:var(--sp-3)!important;}
 
-.new-col #new-spotlight{display:flex;flex-direction:column;}
+.new-nav{display:flex;align-items:center;gap:6px;}
+.new-nav-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;color:var(--navy);transition:background .15s,border-color .15s;padding:0;}
+.new-nav-btn:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.new-nav-pager{font-size:13px;font-weight:600;color:var(--muted);min-width:32px;text-align:center;}
+.new-slider-wrap{overflow:hidden;}
+.new-slider-track{display:flex;transition:transform .4s cubic-bezier(.25,.46,.45,.94);}
+.new-slider-track .nsc-card{flex:0 0 100%;min-width:100%;}
 .new-col .nsc-card{display:flex;flex-direction:column;}
 .new-col .nsc-cover-wrap{}
 
@@ -532,9 +538,9 @@ body.hero-page .topbar-ytutpr{color:white;background:rgba(255,255,255,.26);borde
   transition:box-shadow .15s,transform .15s,filter .15s;
 }
 .curation-btn:hover{box-shadow:0 8px 24px rgba(26,46,68,.38);transform:translateY(-2px);filter:brightness(1.08);}
-.curation-btn-inner{display:flex;flex-direction:column;gap:6px;flex:1;}
-.curation-btn-label{font-size:16px;font-weight:800;white-space:nowrap;color:white;}
-.curation-btn-desc{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;}
+.curation-btn-inner{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;}
+.curation-btn-label{font-size:20px;font-weight:900;white-space:nowrap;color:white;}
+.curation-btn-desc{font-size:12px;color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .curation-btn-arrow{font-size:20px;color:rgba(255,255,255,.7);font-weight:400;flex-shrink:0;}
 
 /* ── 홍보 배너 슬롯 ── */
