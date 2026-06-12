@@ -505,15 +505,15 @@ body.hero-page .topbar-ytutpr{color:white;background:rgba(255,255,255,.26);borde
 .best-cat-row{display:flex;flex-direction:column;gap:var(--sp-3);}
 .best-cat-label{
   font-size:16px;font-weight:800;color:var(--navy);
-  padding-bottom:8px;
-  border-bottom:2px solid var(--border);
   display:flex;align-items:center;gap:6px;
-  width:100%;justify-content:space-between;
 }
-.best-cat-row:nth-child(1) .best-cat-label{border-bottom-color:#1a4fa0;}
-.best-cat-row:nth-child(1) .best-cat-label::before{content:'초등';display:none;}
-.best-cat-row:nth-child(2) .best-cat-label{border-bottom-color:var(--red);}
-.best-cat-row:nth-child(3) .best-cat-label{border-bottom-color:#2e7d32;}
+.best-cat-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:8px;border-bottom:2px solid var(--border);
+}
+.best-cat-row:nth-child(1) .best-cat-header{border-bottom-color:#1a4fa0;}
+.best-cat-row:nth-child(2) .best-cat-header{border-bottom-color:var(--red);}
+.best-cat-row:nth-child(3) .best-cat-header{border-bottom-color:#2e7d32;}
 .best-cat-books{grid-template-columns:repeat(4,1fr)!important;gap:var(--sp-3)!important;}
 
 .new-nav{display:flex;align-items:center;gap:6px;}

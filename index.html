@@ -87,6 +87,73 @@
     /* 인기교재 영역: 자료다운로드·관심교재 버튼 숨김 */
     .best-col .book-actions { display: none; }
 
+    /* ─── 프로모션 배너 카드 ─── */
+    .promo-banner-card {
+      display: block; position: relative;
+      border-radius: 12px; overflow: hidden;
+      text-decoration: none; margin-bottom: 10px;
+      min-height: 110px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .promo-banner-card:last-child { margin-bottom: 0; }
+    .promo-banner-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.18); }
+    .promo-banner-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1a2e44 0%, #1f5bba 100%);
+    }
+    .promo-banner-bg--2 {
+      background: linear-gradient(135deg, #b02020 0%, #e64545 100%);
+    }
+    .promo-banner-body {
+      position: relative; z-index: 1;
+      padding: 18px 20px; color: white;
+    }
+    .promo-banner-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      opacity: .7; margin-bottom: 6px; text-transform: uppercase;
+    }
+    .promo-banner-title {
+      font-size: 15px; font-weight: 900; line-height: 1.4; margin-bottom: 10px;
+    }
+    .promo-banner-cta {
+      font-size: 12px; font-weight: 700; opacity: .85;
+    }
+
+    /* ─── 공지사항 게시판 ─── */
+    .notice-board { margin-top: 20px; }
+    .notice-board-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 8px; margin-bottom: 4px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .notice-board-title { font-size: 14px; font-weight: 800; color: var(--navy); }
+    .notice-board-more {
+      font-size: 12px; color: var(--muted); text-decoration: none;
+      transition: color .12s;
+    }
+    .notice-board-more:hover { color: var(--red); }
+    .notice-list { list-style: none; padding: 0; margin: 0; }
+    .notice-item { border-bottom: 1px solid var(--bg2); }
+    .notice-item a {
+      display: block; padding: 9px 2px; font-size: 13px; color: var(--text);
+      text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      transition: color .12s;
+    }
+    .notice-item a:hover { color: var(--red); }
+
+    /* ─── 인기교재 카테고리 행 ─── */
+    .best-cat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: var(--sp-3);
+    }
+    .best-cat-more {
+      font-size: 12px; color: var(--muted);
+      border: 1px solid var(--border); padding: 4px 10px;
+      border-radius: 4px; text-decoration: none;
+      transition: all .15s; white-space: nowrap;
+    }
+    .best-cat-more:hover { color: var(--red); border-color: var(--red); }
+
     /* ─── 교재찾기 팝업 모달 ─── */
     .finder-overlay {
       display: none; position: fixed; inset: 0; z-index: 9000;
@@ -624,19 +691,27 @@
             <div class="section-eyebrow">BEST SELLER</div>
             <h2 class="section-title">인기 교재</h2>
           </div>
-          <a href="books.html?sort=best" class="view-all">전체보기 →</a>
         </div>
         <div class="best-cat-rows">
           <div class="best-cat-row">
-            <div class="best-cat-label">초등</div>
+            <div class="best-cat-header">
+              <div class="best-cat-label">초등</div>
+              <a href="books.html?cat=elementary" class="best-cat-more">더보기 →</a>
+            </div>
             <div id="best-elem" class="book-grid best-cat-books"></div>
           </div>
           <div class="best-cat-row">
-            <div class="best-cat-label">중학</div>
+            <div class="best-cat-header">
+              <div class="best-cat-label">중학</div>
+              <a href="books.html?cat=middle" class="best-cat-more">더보기 →</a>
+            </div>
             <div id="best-mid" class="book-grid best-cat-books"></div>
           </div>
           <div class="best-cat-row">
-            <div class="best-cat-label">고등</div>
+            <div class="best-cat-header">
+              <div class="best-cat-label">고등</div>
+              <a href="books.html?cat=high" class="best-cat-more">더보기 →</a>
+            </div>
             <div id="best-high" class="book-grid best-cat-books"></div>
           </div>
         </div>
@@ -671,7 +746,7 @@
         <!-- 홍보 배너 슬롯 -->
         <div class="promo-banner-slot">
           <div class="promo-banner-eyebrow">PROMOTION</div>
-          <a href="#" class="promo-banner-card">
+          <a href="https://www.ybm.co.kr" target="_blank" class="promo-banner-card">
             <div class="promo-banner-bg"></div>
             <div class="promo-banner-body">
               <div class="promo-banner-tag">YBM 어학원</div>
@@ -679,7 +754,7 @@
               <div class="promo-banner-cta">자세히 보기 →</div>
             </div>
           </a>
-          <a href="#" class="promo-banner-card promo-banner-card--2">
+          <a href="https://www.ybmeps.com" target="_blank" class="promo-banner-card promo-banner-card--2">
             <div class="promo-banner-bg promo-banner-bg--2"></div>
             <div class="promo-banner-body">
               <div class="promo-banner-tag">YBM EPS</div>
@@ -687,6 +762,21 @@
               <div class="promo-banner-cta">자세히 보기 →</div>
             </div>
           </a>
+        </div>
+
+        <!-- 공지사항 -->
+        <div class="notice-board">
+          <div class="notice-board-header">
+            <span class="notice-board-title">공지사항</span>
+            <a href="customer.html?tab=notice" class="notice-board-more">더보기 +</a>
+          </div>
+          <ul class="notice-list">
+            <li class="notice-item"><a href="customer.html?tab=notice&id=5">[공지] YBM북스 참고서 서비스 오픈 안내</a></li>
+            <li class="notice-item"><a href="customer.html?tab=notice&id=4">[공지] 22개정 교육과정 반영 신규 교재 출시 안내</a></li>
+            <li class="notice-item"><a href="customer.html?tab=notice&id=3">[공지] 교재 구매 적립금 및 포인트 제도 안내</a></li>
+            <li class="notice-item"><a href="customer.html?tab=notice&id=2">[공지] 개인정보처리방침 개정 안내</a></li>
+            <li class="notice-item"><a href="customer.html?tab=notice&id=1">[안내] 고객센터 운영 시간 안내</a></li>
+          </ul>
         </div>
 
       </div>
