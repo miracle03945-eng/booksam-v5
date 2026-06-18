@@ -192,13 +192,6 @@
   </div>
 </nav>
 
-<!-- PAGE HERO -->
-<div id="pageHero" class="page-hero default">
-  <div class="page-hero-inner">
-    <h1 class="page-hero-title" id="heroTitle">도서 목록</h1>
-    <p class="page-hero-desc" id="heroDesc">북샘의 다양한 교재를 만나보세요</p>
-  </div>
-</div>
 
 <div class="container" style="padding-bottom:80px;">
   <nav class="breadcrumb">
@@ -425,9 +418,7 @@ if (params.get('openSeries') === '1') toggleSeriesPanel();
 
 // 히어로
 const heroInfo = CAT_HERO[currentCat] || CAT_HERO[''];
-document.getElementById('pageHero').className = `page-hero ${heroInfo.cls}`;
-document.getElementById('heroTitle').textContent = heroInfo.label;
-document.getElementById('heroDesc').textContent  = heroInfo.desc;
+// pageHero removed
 document.getElementById('breadCat').textContent  = heroInfo.label;
 
 // GNB 활성화
