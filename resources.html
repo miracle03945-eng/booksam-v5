@@ -225,7 +225,7 @@
             <button class="mat-type-pill" onclick="setMatType(this,'MP3')">MP3 바로 듣기</button>
             <button class="mat-type-pill" onclick="setMatType(this,'정오표')">정오표</button>
             <button class="mat-type-pill" onclick="setMatType(this,'정답지')">정답 및 해석</button>
-            <button class="mat-type-pill mat-type-pill-login" onclick="setMatType(this,'MP3파일')">
+            <button class="mat-type-pill mat-type-pill-login" id="matPillMp3File" onclick="setMatType(this,'MP3파일')">
               MP3 파일 다운로드
               <span class="mat-pill-lock" title="로그인 필요">🔒</span>
             </button>
@@ -2844,6 +2844,14 @@ function onMatBookSearchKey(e) {
 
 const TYPE_FILTER_MAP = {};
 
+function updateMatLoginUI() {
+  const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const pill = document.getElementById('matPillMp3File');
+  if (!pill) return;
+  pill.querySelector('.mat-pill-lock').style.display = loggedIn ? 'none' : '';
+  pill.classList.toggle('mat-type-pill-login', !loggedIn);
+}
+
 function setMatType(btn, type) {
   document.querySelectorAll('.mat-type-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -2909,7 +2917,7 @@ function renderMaterials(list, page) {
       <div class="mat-col-res">
         <span class="mat-file-badge mat-file-${ft.cls}">${ft.label}</span>
         <span class="mat-res-name">${resName}</span>
-        ${r.login ? '<span class="mat-login-required">🔒 로그인 필요</span>' : ''}
+        ${r.login && localStorage.getItem('isLoggedIn') !== 'true' ? '<span class="mat-login-required">🔒 로그인 필요</span>' : ''}
       </div>
       <div class="mat-col-preview">
         <button class="mat-icon-btn" onclick="showToast('미리보기 서비스 준비 중입니다.')">
@@ -2956,6 +2964,7 @@ function matIndivDownload() {
 }
 
 renderMaterials(ALL_MATS);
+updateMatLoginUI();
 
 // ── 데일리 외국어 ──
 const DAILY_RES = {
