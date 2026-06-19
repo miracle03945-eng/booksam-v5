@@ -1024,6 +1024,8 @@ body.hero-page .topbar-ytutpr{color:white;background:rgba(255,255,255,.26);borde
 .mat-type-pill{padding:5px 13px;font-size:12px;font-weight:600;border:1px solid #ddd;border-radius:20px;background:white;cursor:pointer;font-family:inherit;color:#555;transition:all .15s;}
 .mat-type-pill:hover{border-color:#1a2e44;color:#1a2e44;}
 .mat-type-pill.active{background:#1a2e44;color:white;border-color:#1a2e44;}
+.mat-play-btn{color:var(--navy)!important;}
+.mat-play-btn:hover{color:var(--red)!important;background:rgba(220,38,38,.08)!important;}
 .mat-type-pill-login{gap:5px;display:inline-flex;align-items:center;}
 .mat-pill-lock{font-size:11px;opacity:.75;}
 .mat-type-pill-login:not(.active){border-style:dashed;color:#888;}

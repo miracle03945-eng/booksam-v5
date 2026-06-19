@@ -2512,6 +2512,11 @@ function mp3Seek(event, bar) {
       const book = BOOKS.find(b => String(b.id) === vocaBookId);
       if (book) setTimeout(() => openVocaWizard(book.id), 150);
     }
+    const mp3BookParam = getParam('mp3book');
+    if (mp3BookParam && _initStab === 'mp3') {
+      const book = BOOKS.find(b => String(b.id) === mp3BookParam);
+      if (book) setTimeout(() => selectMp3Book(book), 250);
+    }
   }
 })();
 
@@ -2843,6 +2848,8 @@ function setMatType(btn, type) {
   document.querySelectorAll('.mat-type-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   MF.type = type;
+  const dlHeader = document.querySelector('.mat-table-head .mat-col-dl');
+  if (dlHeader) dlHeader.textContent = (type === 'MP3') ? '바로 듣기' : '다운로드';
   applyMatFilter();
 }
 
@@ -2909,9 +2916,13 @@ function renderMaterials(list, page) {
         </button>
       </div>
       <div class="mat-col-dl">
-        <button class="mat-icon-btn mat-dl-btn" onclick="matDownload(${idx})">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </button>
+        ${r.stream
+          ? `<button class="mat-icon-btn mat-play-btn" title="MP3 바로 듣기" onclick="location.href='resources.html?tab=study&stab=mp3&mp3book=${r.bookId}'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>`
+          : `<button class="mat-icon-btn mat-dl-btn" onclick="matDownload(${idx})">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </button>`}
       </div>
     </div>`;
   }).join('');
