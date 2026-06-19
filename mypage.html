@@ -407,82 +407,119 @@
           <div class="mp-inner-tab active" onclick="switchOrderTab(this,'일반 주문')">일반 주문</div>
           <div class="mp-inner-tab" onclick="switchOrderTab(this,'행사 접수')">행사 접수</div>
         </div>
-        <div class="mp-date-filter">
-          <span class="mp-date-label">기간선택</span>
-          <button class="mp-period-btn active" onclick="setPeriod(this,'1w')">1주일</button>
-          <button class="mp-period-btn" onclick="setPeriod(this,'1m')">1개월</button>
-          <button class="mp-period-btn" onclick="setPeriod(this,'3m')">3개월</button>
-          <button class="mp-period-btn" onclick="setPeriod(this,'6m')">6개월</button>
-          <input type="date" class="mp-date-inp" id="date-from">
-          <span class="mp-date-sep">~</span>
-          <input type="date" class="mp-date-inp" id="date-to">
-          <button class="mp-srch-btn" onclick="Toast.show('조회 중입니다.','info')">조회</button>
-        </div>
-        <div class="mp-order-count">총 <strong>0</strong>건</div>
-        <div class="mp-tbl-wrap">
-          <table class="mp-tbl">
-            <thead>
-              <tr>
-                <th>주문번호</th>
-                <th>주문일</th>
-                <th>주문내용</th>
-                <th>주문금액/수량</th>
-                <th>주문상태</th>
-                <th>주문관리</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="6" class="mp-empty-state"><span class="mp-empty-icon2">ⓘ</span>주문 내역이 없습니다.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="mp-notes">
-          <p>- 배송조회를 누르시면 해당 주문 건의 배송 현황을 조회하실 수 있습니다.</p>
-          <p>- 가상계좌(무통장입금) 후에는 자동 주문취소가 불가하며 배송준비중 이전에 별도로 "취소 요청"으로 담당자 확인 후 주문 취소가 가능합니다.</p>
-          <p class="mp-red">- 주문 건이 배송준비중 상태 이후에는 이용자 주문취소가 불가하며, 구매일로 부터 7일 이내로 1:1 문의를 남겨주시거나, 02-2000-0500으로 연락주시면 환불 처리 도와드리겠습니다.</p>
-          <p class="mp-red">- 환불 요청 시, 상품 회수 및 환불 진행까지는 영업일 기준 7일~10일 소요될 수 있습니다.</p>
-        </div>
-        <div class="mp-order-flow-section">
-          <div class="mp-oflow-tabs">
-            <div class="mp-oflow-tab active">일반 교재</div>
-            <div class="mp-oflow-tab">디지털콘텐츠</div>
+
+        <!-- ══ 일반 주문 콘텐츠 ══ -->
+        <div data-ordertab="일반">
+          <div class="mp-date-filter">
+            <span class="mp-date-label">기간선택</span>
+            <button class="mp-period-btn active" onclick="setPeriod(this,'1w')">1주일</button>
+            <button class="mp-period-btn" onclick="setPeriod(this,'1m')">1개월</button>
+            <button class="mp-period-btn" onclick="setPeriod(this,'3m')">3개월</button>
+            <button class="mp-period-btn" onclick="setPeriod(this,'6m')">6개월</button>
+            <input type="date" class="mp-date-inp" id="date-from">
+            <span class="mp-date-sep">~</span>
+            <input type="date" class="mp-date-inp" id="date-to">
+            <button class="mp-srch-btn" onclick="Toast.show('조회 중입니다.','info')">조회</button>
           </div>
-          <div class="mp-flow-steps">
-            <div class="mp-flow-step">
-              <div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
-              <div class="mp-flow-label">주문접수</div>
+          <div class="mp-order-count">총 <strong>0</strong>건</div>
+          <div class="mp-tbl-wrap">
+            <table class="mp-tbl">
+              <thead>
+                <tr>
+                  <th>주문번호</th><th>주문일</th><th>주문내용</th>
+                  <th>주문금액/수량</th><th>주문상태</th><th>주문관리</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="6" class="mp-empty-state"><span class="mp-empty-icon2">ⓘ</span>주문 내역이 없습니다.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mp-notes">
+            <p>- 배송조회를 누르시면 해당 주문 건의 배송 현황을 조회하실 수 있습니다.</p>
+            <p>- 가상계좌(무통장입금) 후에는 자동 주문취소가 불가하며 배송준비중 이전에 별도로 "취소 요청"으로 담당자 확인 후 주문 취소가 가능합니다.</p>
+            <p class="mp-red">- 주문 건이 배송준비중 상태 이후에는 이용자 주문취소가 불가하며, 구매일로 부터 7일 이내로 1:1 문의를 남겨주시거나, 02-2000-0500으로 연락주시면 환불 처리 도와드리겠습니다.</p>
+            <p class="mp-red">- 환불 요청 시, 상품 회수 및 환불 진행까지는 영업일 기준 7일~10일 소요될 수 있습니다.</p>
+          </div>
+          <div class="mp-order-flow-section">
+            <div class="mp-oflow-tabs">
+              <div class="mp-oflow-tab active" onclick="switchOflowTab(this,'book')">일반 교재</div>
+              <div class="mp-oflow-tab" onclick="switchOflowTab(this,'digital')">디지털콘텐츠</div>
             </div>
-            <div class="mp-flow-arr">›</div>
-            <div class="mp-flow-step">
-              <div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-              <div class="mp-flow-label">결제완료</div>
+            <!-- 일반 교재 플로우 -->
+            <div data-oflow="book">
+              <div class="mp-flow-steps">
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div><div class="mp-flow-label">주문접수</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="mp-flow-label">결제완료</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><div class="mp-flow-label">배송 준비중</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="mp-flow-label">배송중</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="mp-flow-label">배송완료</div></div>
+              </div>
+              <div class="mp-cancel-label"><span class="mp-cancel-arr">←</span> 주문취소 가능 <span class="mp-cancel-arr">→</span></div>
             </div>
-            <div class="mp-flow-arr">›</div>
-            <div class="mp-flow-step">
-              <div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-              <div class="mp-flow-label">배송 준비중</div>
-            </div>
-            <div class="mp-flow-arr">›</div>
-            <div class="mp-flow-step">
-              <div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-              <div class="mp-flow-label">배송중</div>
-            </div>
-            <div class="mp-flow-arr">›</div>
-            <div class="mp-flow-step">
-              <div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-              <div class="mp-flow-label">배송완료</div>
+            <!-- 디지털콘텐츠 플로우 -->
+            <div data-oflow="digital" style="display:none">
+              <div class="mp-flow-steps">
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div><div class="mp-flow-label">주문접수</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="mp-flow-label">결제완료</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="mp-flow-label">이용기간중</div></div>
+                <div class="mp-flow-arr">›</div>
+                <div class="mp-flow-step"><div class="mp-flow-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="mp-flow-label">이용완료</div></div>
+              </div>
+              <div class="mp-cancel-label"><span class="mp-cancel-arr">←</span> 취소 가능 <span class="mp-cancel-arr">→</span></div>
             </div>
           </div>
-          <div class="mp-cancel-label"><span class="mp-cancel-arr">←</span> 주문취소 가능 <span class="mp-cancel-arr">→</span></div>
+          <div class="mp-order-info">
+            <div class="mp-order-info-title">주문 및 배송안내</div>
+            <ul>
+              <li>소득공제 대상 도서와 비대상 도서를 동시에 결제 시, 문화비 소득공제 처리가 불가합니다.</li>
+              <li>소득공제를 원하시는 경우 소득공제 대상 도서와 비대상 도서를 구분하여 각각 결제해주시기 바랍니다. (나눠서 결제시 택배비가 각각 부과될 수 있습니다.)</li>
+              <li>법인카드 결제는 문화비 소득공제 적용이 불가합니다.</li>
+            </ul>
+          </div>
         </div>
-        <div class="mp-order-info">
-          <div class="mp-order-info-title">주문 및 배송안내</div>
-          <ul>
-            <li>소득공제 대상 도서와 비대상 도서를 동시에 결제 시, 문화비 소득공제 처리가 불가합니다.</li>
-            <li>소득공제를 원하시는 경우 소득공제 대상 도서와 비대상 도서를 구분하여 각각 결제해주시기 바랍니다. (나눠서 결제시 택배비가 각각 부과될 수 있습니다.)</li>
-            <li>법인카드 결제는 문화비 소득공제 적용이 불가합니다.</li>
-          </ul>
+
+        <!-- ══ 행사 접수 콘텐츠 ══ -->
+        <div data-ordertab="행사" style="display:none">
+          <div class="mp-date-filter">
+            <span class="mp-date-label">기간선택</span>
+            <button class="mp-period-btn active" onclick="setPeriod(this,'1w')">1주일</button>
+            <button class="mp-period-btn" onclick="setPeriod(this,'1m')">1개월</button>
+            <button class="mp-period-btn" onclick="setPeriod(this,'3m')">3개월</button>
+            <button class="mp-period-btn" onclick="setPeriod(this,'6m')">6개월</button>
+            <input type="date" class="mp-date-inp">
+            <span class="mp-date-sep">~</span>
+            <input type="date" class="mp-date-inp">
+            <button class="mp-srch-btn" onclick="Toast.show('조회 중입니다.','info')">조회</button>
+          </div>
+          <div class="mp-order-count">총 <strong>0</strong>건</div>
+          <div class="mp-tbl-wrap">
+            <table class="mp-tbl">
+              <thead>
+                <tr>
+                  <th>접수번호</th><th>접수일</th><th>내용</th><th>금액</th>
+                  <th>선정여부</th><th>선정일</th><th>주문상태</th><th>주문관리</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="8" class="mp-empty-state"><span class="mp-empty-icon2">ⓘ</span>접수 내역이 없습니다.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mp-notes">
+            <p class="mp-red">- 행사 접수 후, 선정된 참가자에게만 결제 버튼이 활성화됩니다.</p>
+            <p class="mp-red">- 결제 완료 시 참가가 최종 확정됩니다.</p>
+            <p class="mp-red">- 한정된 모집 인원으로 인해, 결제 이후 취소나 환불은 불가합니다.</p>
+            <p class="mp-red">- 선정 후 결제를 진행하지 않으신 경우, 참가 자격이 차순위 후보자에게 이관됩니다.</p>
+          </div>
         </div>
+
       </div>
     </div>
 
@@ -1176,6 +1213,18 @@ function toggleAllChk(cls, triggerChk) {
 function switchOrderTab(el, name) {
   document.querySelectorAll('.mp-inner-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
+  document.querySelectorAll('[data-ordertab]').forEach(s => s.style.display = 'none');
+  const key = name === '행사 접수' ? '행사' : '일반';
+  const sec = document.querySelector(`[data-ordertab="${key}"]`);
+  if (sec) sec.style.display = 'block';
+}
+
+function switchOflowTab(el, type) {
+  el.closest('.mp-oflow-tabs').querySelectorAll('.mp-oflow-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  el.closest('.mp-order-flow-section').querySelectorAll('[data-oflow]').forEach(s => s.style.display = 'none');
+  const sec = el.closest('.mp-order-flow-section').querySelector(`[data-oflow="${type}"]`);
+  if (sec) sec.style.display = 'block';
 }
 
 function switchPiTab(btn) {
