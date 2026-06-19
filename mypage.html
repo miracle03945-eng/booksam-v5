@@ -292,7 +292,6 @@
       <a href="mypage.html" class="mp-tab" id="tab-home">홈</a>
       <a href="mypage.html?tab=favorite" class="mp-tab" id="tab-favorite">관심 교재</a>
       <a href="mypage.html?tab=created" class="mp-tab" id="tab-created">내가 만든 자료</a>
-      <a href="mypage.html?tab=recent" class="mp-tab" id="tab-recent">최근 본 자료</a>
       <a href="mypage.html?tab=orders" class="mp-tab" id="tab-orders">주문내역</a>
       <a href="mypage.html?tab=cart" class="mp-tab" id="tab-cart">장바구니</a>
       <a href="mypage.html?tab=profile" class="mp-tab" id="tab-profile">개인정보변경</a>
@@ -335,15 +334,9 @@
         <div id="mp-fav-area"></div>
       </div>
 
-      <div class="mp-row">
-        <div class="mp-card">
-          <div class="mp-card-header"><span class="mp-card-title">최근 본 자료</span><a href="mypage.html?tab=recent" class="mp-card-plus">+</a></div>
-          <ul class="mp-mat-list" id="mp-recent-list"></ul>
-        </div>
-        <div class="mp-card">
-          <div class="mp-card-header"><span class="mp-card-title">내가 만든 자료</span><a href="mypage.html?tab=created" class="mp-card-plus">+</a></div>
-          <ul class="mp-mat-list" id="mp-created-list"></ul>
-        </div>
+      <div class="mp-card mp-card-full">
+        <div class="mp-card-header"><span class="mp-card-title">내가 만든 자료</span><a href="mypage.html?tab=created" class="mp-card-plus">+</a></div>
+        <ul class="mp-mat-list" id="mp-created-list"></ul>
       </div>
     </div>
 
@@ -385,7 +378,6 @@
         <div style="height:14px"></div>
         <div class="mp-inner-tabs">
           <div class="mp-inner-tab active" onclick="switchOrderTab(this,'일반 주문')">일반 주문</div>
-          <div class="mp-inner-tab" onclick="switchOrderTab(this,'사은품 주문')">사은품 주문</div>
           <div class="mp-inner-tab" onclick="switchOrderTab(this,'행사 접수')">행사 접수</div>
         </div>
         <div class="mp-date-filter">
