@@ -219,7 +219,43 @@
     .mp-tabs{flex-wrap:wrap;}
     .mp-tab{min-width:33.33%;border-bottom:1px solid #e0e0e0;}
     .mp-cart-total-grid{grid-template-columns:1fr 1fr;}
+    .pi-tabs{flex-wrap:wrap;}
+    .pi-tab{padding:10px 14px;font-size:13px;}
+    .pi-label{width:100px;}
   }
+
+  /* ─── 개인정보변경 내부 탭 ─── */
+  .pi-wrap{padding:24px 28px 28px;}
+  .pi-tabs{display:flex;border-bottom:1px solid #e0e0e0;margin-bottom:24px;}
+  .pi-tab{padding:12px 20px;font-size:14px;font-weight:600;color:#666;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;user-select:none;}
+  .pi-tab.active{color:#c0392b;border-bottom-color:#c0392b;}
+  .pi-tab:hover:not(.active){color:#333;}
+  .pi-panel{display:none;}
+  .pi-panel.active{display:block;}
+  .pi-form-row{display:flex;align-items:flex-start;padding:13px 0;border-bottom:1px solid #f0f0f0;}
+  .pi-form-row.no-border{border-bottom:none;}
+  .pi-label{width:145px;flex-shrink:0;font-size:14px;font-weight:700;color:#333;padding-top:9px;line-height:1.5;}
+  .pi-label .req{color:#c0392b;}
+  .pi-field{flex:1;min-width:0;}
+  .pi-input{padding:8px 11px;border:1px solid #ccc;border-radius:3px;font-size:14px;font-family:inherit;box-sizing:border-box;height:36px;}
+  .pi-input:focus{outline:none;border-color:#c0392b;}
+  .pi-input.w-full{width:100%;}
+  .pi-select{padding:7px 10px;border:1px solid #ccc;border-radius:3px;font-size:13px;font-family:inherit;background:white;cursor:pointer;height:36px;}
+  .pi-btn-pi{padding:8px 36px;font-size:14px;font-weight:700;border-radius:3px;cursor:pointer;font-family:inherit;border:none;}
+  .pi-btn-cancel{background:#999;color:white;}
+  .pi-btn-cancel:hover{background:#888;}
+  .pi-btn-navy{background:#1a2e44;color:white;}
+  .pi-btn-navy:hover{background:#0d1b2a;}
+  .pi-btn-red{background:#c0392b;color:white;}
+  .pi-btn-red:hover{background:#a93226;}
+  .pi-btn-sm{padding:7px 14px;font-size:13px;white-space:nowrap;}
+  .pi-btn-group{display:flex;gap:8px;justify-content:center;padding-top:20px;}
+  .pi-notice{background:#f8f9fa;border:1px solid #e5e5e5;border-radius:3px;padding:14px 18px;font-size:13px;color:#555;line-height:1.85;margin-bottom:4px;}
+  .pi-divider{border:none;border-top:1px solid #e0e0e0;margin:14px 0;}
+  .pi-sns-row{display:flex;align-items:center;gap:14px;padding:14px 0;}
+  .pi-sns-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+  .pi-sns-name{font-size:15px;font-weight:700;width:54px;}
+  .pi-sns-status{font-size:13px;color:#888;}
   </style>
 </head>
 <body>
@@ -565,19 +601,210 @@
 
     <!-- ─── 개인정보변경 패널 ─── -->
     <div id="panel-profile" style="display:none">
-      <div class="mp-subpage" style="padding:24px;">
-        <div class="mp-subpage-title" style="padding:0;margin-bottom:20px;">개인정보변경</div>
-        <div style="max-width:480px;">
-          <div style="margin-bottom:16px;"><label style="display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">이름</label><input type="text" value="김유진" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:4px;font-size:14px;font-family:inherit;box-sizing:border-box;" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'"></div>
-          <div style="margin-bottom:16px;"><label style="display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">이메일</label><input type="email" value="yujin@school.kr" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:4px;font-size:14px;font-family:inherit;box-sizing:border-box;" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'"></div>
-          <div style="margin-bottom:20px;"><label style="display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">휴대폰</label><input type="tel" value="010-1234-5678" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:4px;font-size:14px;font-family:inherit;box-sizing:border-box;" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'"></div>
-          <div style="background:#f8f9fa;border-radius:4px;padding:16px;margin-bottom:20px;border:1px solid #eee;">
-            <div style="font-size:13px;font-weight:700;margin-bottom:12px;">비밀번호 변경</div>
-            <input type="password" placeholder="현재 비밀번호" style="width:100%;padding:10px 13px;border:1.5px solid #ddd;border-radius:4px;font-size:13px;margin-bottom:8px;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'">
-            <input type="password" placeholder="새 비밀번호" style="width:100%;padding:10px 13px;border:1.5px solid #ddd;border-radius:4px;font-size:13px;margin-bottom:8px;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'">
-            <input type="password" placeholder="새 비밀번호 확인" style="width:100%;padding:10px 13px;border:1.5px solid #ddd;border-radius:4px;font-size:13px;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#c0392b'" onblur="this.style.borderColor='#ddd'">
+      <div class="mp-subpage">
+        <div class="mp-subpage-title">개인정보변경</div>
+        <div class="pi-wrap">
+
+          <!-- 내부 탭 -->
+          <div class="pi-tabs">
+            <div class="pi-tab active" data-pitab="member" onclick="switchPiTab(this)">회원정보 변경</div>
+            <div class="pi-tab" data-pitab="password" onclick="switchPiTab(this)">비밀번호 변경</div>
+            <div class="pi-tab" data-pitab="withdraw" onclick="switchPiTab(this)">회원 탈퇴</div>
+            <div class="pi-tab" data-pitab="connect" onclick="switchPiTab(this)">계정 연동</div>
           </div>
-          <button onclick="Toast.show('개인정보가 저장되었습니다.','success')" style="background:#c0392b;color:white;border:none;padding:13px 32px;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">저장하기</button>
+
+          <!-- ① 회원정보 변경 -->
+          <div id="pitab-member" class="pi-panel active">
+            <div class="pi-form-row">
+              <div class="pi-label">아이디 <span class="req">*</span></div>
+              <div class="pi-field" style="padding-top:9px;font-size:14px;font-weight:700;">miracle0394</div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">이름</div>
+              <div class="pi-field"><input type="text" class="pi-input" value="도연주" style="max-width:200px;"></div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">생년월일 <span class="req">*</span></div>
+              <div class="pi-field" style="display:flex;gap:6px;align-items:center;">
+                <select class="pi-select" id="byYear"></select>
+                <select class="pi-select" id="byMonth"></select>
+                <select class="pi-select" id="byDay"></select>
+              </div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">휴대폰 <span class="req">*</span></div>
+              <div class="pi-field" style="display:flex;gap:6px;align-items:center;">
+                <select class="pi-select"><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option></select>
+                <input type="text" class="pi-input" value="30356378" style="max-width:160px;">
+                <button class="pi-btn-pi pi-btn-navy pi-btn-sm">휴대폰 인증</button>
+              </div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">이메일 <span class="req">*</span></div>
+              <div class="pi-field">
+                <div style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;">
+                  <input type="text" class="pi-input" value="miracle0394" style="max-width:130px;">
+                  <span style="font-size:15px;font-weight:700;padding:0 2px;">@</span>
+                  <input type="text" class="pi-input" value="naver.com" style="max-width:130px;" id="emailDomainInput">
+                  <select class="pi-select" onchange="var v=this.value;if(v!=='직접입력'){document.getElementById('emailDomainInput').value=v;}else{document.getElementById('emailDomainInput').value='';document.getElementById('emailDomainInput').focus();}">
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="직접입력">직접입력</option>
+                  </select>
+                </div>
+                <div style="font-size:12px;color:#c0392b;line-height:1.7;margin-top:6px;">
+                  ※ 법적 안내사항 및 구매 영수증 발송을 위해 개인 메일을 정확히 작성해주세요.<br>
+                  (korea 및 sen 계정 등 일부 메일은 수신이 불가한 경우가 있으니 가급적 개인 메일계정을 이용해주세요.)
+                </div>
+              </div>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-form-row">
+              <div class="pi-label">회원유형 <span class="req">*</span></div>
+              <div class="pi-field" style="display:flex;gap:16px;flex-wrap:wrap;padding-top:8px;">
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="mtype" checked> 학원 선생님</label>
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="mtype"> 학교 선생님</label>
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="mtype"> 학생</label>
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="mtype"> 학부모</label>
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="mtype"> 일반</label>
+              </div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">학원유형 <span class="req">*</span></div>
+              <div class="pi-field"><select class="pi-select"><option>과외</option><option>개인학원</option><option>프랜차이즈</option><option>공부방</option></select></div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">학원명 <span class="req">*</span></div>
+              <div class="pi-field"><input type="text" class="pi-input w-full" value="와이비엠영어(YBM English)영어교습소"></div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">학원주소 <span class="req">*</span></div>
+              <div class="pi-field">
+                <div style="display:flex;gap:6px;margin-bottom:6px;">
+                  <input type="text" class="pi-input" placeholder="서울특별시 강남구 삼성로 212" style="flex:1;">
+                  <button class="pi-btn-pi pi-btn-navy pi-btn-sm">주소찾기</button>
+                </div>
+                <input type="text" class="pi-input w-full" placeholder="/ 302호 (대치동/은마복지상가)">
+              </div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">담당 <span class="req">*</span></div>
+              <div class="pi-field" style="display:flex;gap:6px;">
+                <select class="pi-select"><option>초</option><option>중</option><option>고</option></select>
+                <select class="pi-select"><option>기타</option><option>영어</option><option>국어</option><option>수학</option><option>과학</option></select>
+              </div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">현재사용교재 <span class="req">*</span></div>
+              <div class="pi-field"><input type="text" class="pi-input w-full" placeholder="현재 사용하고 계신 교재명을 입력해주세요."></div>
+            </div>
+            <div class="pi-form-row">
+              <div class="pi-label">교재개발검토의사 <span class="req">*</span></div>
+              <div class="pi-field" style="display:flex;gap:20px;flex-wrap:wrap;padding-top:8px;">
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="devreview"> 교재개발 검토에 참여하고 싶어요!</label>
+                <label style="display:flex;align-items:center;gap:5px;font-size:14px;cursor:pointer;"><input type="radio" name="devreview" checked> 교재개발 검토는 다음에 할게요.</label>
+              </div>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-form-row no-border">
+              <div class="pi-label">마케팅정보 수신</div>
+              <div class="pi-field">
+                <div style="display:flex;gap:16px;margin-bottom:6px;">
+                  <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;"><input type="checkbox" checked> SMS</label>
+                  <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;"><input type="checkbox" checked> 이메일</label>
+                </div>
+                <div style="font-size:12px;color:#888;">신간도서, 이벤트 등의 안내를 받을 수 있습니다.</div>
+              </div>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-btn-group">
+              <button class="pi-btn-pi pi-btn-cancel" style="padding:9px 36px;">이전</button>
+              <button class="pi-btn-pi pi-btn-navy" style="padding:9px 36px;" onclick="Toast.show('개인정보가 수정되었습니다.','success')">정보수정</button>
+            </div>
+          </div>
+
+          <!-- ② 비밀번호 변경 -->
+          <div id="pitab-password" class="pi-panel">
+            <div class="pi-notice">
+              비밀번호는 영문, 숫자, 특수문자로 조합하여 8-15자로 만드실 수 있습니다.<br>
+              비밀번호는 아이디나 주민등록번호 및 전화번호와 같이 개인정보와 관련 된 숫자나 문자를 사용하시면 안됩니다.<br>
+              다음의 특수기호는 보안상의 문제로 사용하실 수 없습니다. (' ; – &lt; \ / )
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-form-row">
+              <div class="pi-label">새 비밀번호 <span class="req">*</span></div>
+              <div class="pi-field"><input type="password" class="pi-input" value="..........." style="max-width:300px;"></div>
+            </div>
+            <div class="pi-form-row no-border">
+              <div class="pi-label">새 비밀번호 확인 <span class="req">*</span></div>
+              <div class="pi-field"><input type="password" class="pi-input" placeholder="새 비밀번호를 다시 입력해주세요" style="max-width:300px;"></div>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-btn-group">
+              <button class="pi-btn-pi pi-btn-cancel" style="padding:9px 36px;">취소</button>
+              <button class="pi-btn-pi pi-btn-navy" style="padding:9px 36px;" onclick="Toast.show('비밀번호가 변경되었습니다.','success')">변경</button>
+            </div>
+          </div>
+
+          <!-- ③ 회원 탈퇴 -->
+          <div id="pitab-withdraw" class="pi-panel">
+            <div class="pi-notice">
+              회원탈퇴 시 YBM북쎔 서비스 이용이 제한되며<br>
+              회원님의 개인정보와 서비스 이용정보 등 모든 이력이 삭제됩니다.<br>
+              재가입하셔도 탈퇴 시 삭제된 정보는 복구되지 않습니다.
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-form-row no-border">
+              <div class="pi-label" style="line-height:1.7;">탈퇴 사유 <span class="req">*</span><br><span style="font-size:11px;color:#888;font-weight:400;">복수선택 가능</span></div>
+              <div class="pi-field" style="display:flex;flex-direction:column;gap:11px;padding-top:6px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox"> 콘텐츠 부족 또는 불만</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox"> 타사의 유사 서비스로 이동</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox"> 개인정보 노출 우려</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox"> 시스템 장애로 인한 불편</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox"> 장기간 미이용</label>
+                <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;"><input type="checkbox"> 기타</label>
+              </div>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-btn-group">
+              <button class="pi-btn-pi pi-btn-cancel" style="padding:9px 36px;">취소</button>
+              <button class="pi-btn-pi pi-btn-navy" style="padding:9px 36px;" onclick="Toast.show('회원탈퇴가 처리되었습니다.','info')">탈퇴</button>
+            </div>
+          </div>
+
+          <!-- ④ 계정 연동 -->
+          <div id="pitab-connect" class="pi-panel">
+            <div class="pi-notice">SNS 계정을 연동하면 해당 계정으로 간편하게 로그인할 수 있습니다.</div>
+            <hr class="pi-divider">
+            <div class="pi-sns-row">
+              <div class="pi-sns-icon" style="background:#FEE500;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#3A1D1D"><path d="M12 3C6.48 3 2 6.69 2 11.25c0 2.9 1.87 5.45 4.71 6.94-.21.78-.75 2.81-.86 3.25-.13.54.2.53.42.39.17-.11 2.76-1.86 3.88-2.62.6.08 1.21.12 1.85.12 5.52 0 10-3.69 10-8.25S17.52 3 12 3z"/></svg>
+              </div>
+              <div class="pi-sns-name">카카오</div>
+              <div class="pi-sns-status">미연동</div>
+              <button class="pi-btn-pi pi-btn-navy pi-btn-sm" style="margin-left:auto;">연동하기</button>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-sns-row">
+              <div class="pi-sns-icon" style="background:#fff;border:1.5px solid #ddd;">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              </div>
+              <div class="pi-sns-name">구글</div>
+              <div class="pi-sns-status">미연동</div>
+              <button class="pi-btn-pi pi-btn-navy pi-btn-sm" style="margin-left:auto;">연동하기</button>
+            </div>
+            <hr class="pi-divider">
+            <div class="pi-sns-row">
+              <div class="pi-sns-icon" style="background:#000;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              </div>
+              <div class="pi-sns-name">애플</div>
+              <div class="pi-sns-status">미연동</div>
+              <button class="pi-btn-pi pi-btn-navy pi-btn-sm" style="margin-left:auto;">연동하기</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -950,6 +1177,40 @@ function switchOrderTab(el, name) {
   document.querySelectorAll('.mp-inner-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 }
+
+function switchPiTab(btn) {
+  document.querySelectorAll('.pi-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pi-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pitab-' + btn.dataset.pitab).classList.add('active');
+}
+
+// 생년월일 드롭다운 초기화
+(function(){
+  const yEl = document.getElementById('byYear');
+  const mEl = document.getElementById('byMonth');
+  const dEl = document.getElementById('byDay');
+  if (!yEl) return;
+  const curYear = 2026;
+  for (let y = curYear - 5; y >= 1940; y--) {
+    const o = document.createElement('option');
+    o.value = y; o.textContent = y;
+    if (y === 1996) o.selected = true;
+    yEl.appendChild(o);
+  }
+  for (let m = 1; m <= 12; m++) {
+    const o = document.createElement('option');
+    o.value = m; o.textContent = m;
+    if (m === 12) o.selected = true;
+    mEl.appendChild(o);
+  }
+  for (let d = 1; d <= 31; d++) {
+    const o = document.createElement('option');
+    o.value = d; o.textContent = d;
+    if (d === 3) o.selected = true;
+    dEl.appendChild(o);
+  }
+})();
 
 function setPeriod(btn, period) {
   document.querySelectorAll('.mp-period-btn').forEach(b => b.classList.remove('active'));
