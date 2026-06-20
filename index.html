@@ -546,8 +546,8 @@
             <button class="hs-btn-o" onclick="location.href='events.html'">자세히 보기</button>
           </div>
         </div>
-        <div class="hs-books hs-event-visual" style="flex:0 0 320px;align-items:center;justify-content:center;">
-          <svg width="280" height="240" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="hs-books hs-event-visual" style="flex:0 0 460px;align-items:center;justify-content:center;">
+          <svg width="420" height="360" viewBox="0 0 280 240" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- 배경 빛 효과 -->
             <ellipse cx="140" cy="200" rx="110" ry="20" fill="rgba(255,215,0,0.12)"/>
             <!-- 선물 상자 몸통 -->
@@ -1032,15 +1032,26 @@ document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==
     // Phonics NOW — 민트→스카이→퍼플→핑크 파스텔
     'linear-gradient(135deg, #90e8c8 0%, #78b8f0 30%, #b098e8 62%, #e898c8 100%)',
   ];
-  let cur = 0, tmr;
+  let cur = 0, dir = 1, tmr;
   const track = document.getElementById('hsTrack');
   const wrap  = document.getElementById('heroSlider');
   const dots  = document.querySelectorAll('.hs-dot');
   const slides = document.querySelectorAll('.hs-slide');
   const N = BG.length;
 
-  function goTo(idx) {
-    cur = ((idx % N) + N) % N;
+  function startTimer() {
+    clearInterval(tmr);
+    tmr = setInterval(() => {
+      let next = cur + dir;
+      if (next >= N) { dir = -1; next = N - 2; }
+      else if (next < 0) { dir = 1; next = 1; }
+      goTo(next, false);
+    }, 5000);
+  }
+
+  function goTo(idx, resetDir = true) {
+    if (resetDir) dir = idx >= cur ? 1 : -1;
+    cur = Math.max(0, Math.min(N - 1, idx));
     if (track) track.style.transform = `translateX(-${cur * 100}%)`;
     dots.forEach((d,i) => d.classList.toggle('active', i === cur));
     document.body.style.background = BG[cur];
@@ -1049,8 +1060,7 @@ document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==
       wrap.dataset.theme = theme;
       document.body.setAttribute('data-hero-theme', theme);
     }
-    clearInterval(tmr);
-    tmr = setInterval(() => goTo(cur + 1), 5000);
+    startTimer();
   }
 
   document.getElementById('hsPrev')?.addEventListener('click', () => goTo(cur - 1));
