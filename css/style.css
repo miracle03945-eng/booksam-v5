@@ -533,7 +533,7 @@ span.gnb-link{cursor:default;}
 .best-cat-row:nth-child(1) .best-cat-header{border-bottom-color:#1a4fa0;}
 .best-cat-row:nth-child(2) .best-cat-header{border-bottom-color:var(--red);}
 .best-cat-row:nth-child(3) .best-cat-header{border-bottom-color:#2e7d32;}
-.best-cat-books{grid-template-columns:repeat(4,1fr)!important;gap:var(--sp-3)!important;}
+.best-cat-books{grid-template-columns:repeat(2,1fr)!important;gap:var(--sp-3)!important;}
 
 .new-nav{display:flex;align-items:center;gap:6px;}
 .new-nav-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;color:var(--navy);transition:background .15s,border-color .15s;padding:0;}
@@ -2363,4 +2363,90 @@ span.gnb-link{cursor:default;}
   .sm-filter-area{flex-direction:column;gap:16px;}
   .sm-filter-block:first-child{flex:none;width:100%;}
   .sm-series-grid{grid-template-columns:1fr;}
+}
+
+/* ═══════════════════════════════════════════
+   v5 모바일 반응형 개선 — max-width: 768px
+   ═══════════════════════════════════════════ */
+@media(max-width:768px){
+
+  /* ── 공통 컨테이너 ── */
+  .container{padding:0 var(--sp-3);}
+
+  /* ── 헤더 util-bar ── */
+  .util-bar-inner{height:56px;gap:10px;padding:0 10px;}
+  .ybm-mark{height:44px!important;}
+  .stg-btn{padding:3px 8px;font-size:10px;}
+
+  /* ── 섹션 간격 ── */
+  .section{padding:var(--sp-5) 0;}
+  .best-new-layout{gap:var(--sp-6);}
+
+  /* ── 인기교재: 2열로 표시 ── */
+  .best-cat-books{grid-template-columns:repeat(2,1fr)!important;}
+
+  /* ── 신간 스포트라이트 카드 높이 줄이기 ── */
+  .nsc-card{height:auto;}
+  .nsc-cover-wrap{height:200px;}
+  .nsc-cover-img{height:170px;}
+
+  /* ── 큐레이션 버튼: 두 줄 허용 ── */
+  .curation-btn-desc{white-space:normal;overflow:visible;text-overflow:unset;}
+
+  /* ── 필터 가로 스크롤 ── */
+  .hfilter-section{padding:14px 12px;}
+  .hfilter-pills{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}
+  .hfilter-pills::-webkit-scrollbar{display:none;}
+  .hfilter-pill{flex-shrink:0;}
+
+  /* ── 교재 자료실 테이블: 가로 스크롤 ── */
+  .mat-table{border-radius:0;overflow:visible;}
+  .mat-table-wrap-mobile{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:8px;}
+  .mat-table-head,.mat-row{grid-template-columns:44px 1px 1fr 1px minmax(110px,0.6fr) 64px 64px 60px;min-width:600px;}
+
+  /* ── 교재 목록 툴바 ── */
+  .list-toolbar{gap:var(--sp-1);}
+  .list-count{font-size:13px;}
+  .sort-tab{padding:8px var(--sp-3);font-size:13px;}
+
+  /* ── 교재 상세 액션 버튼 ── */
+  .detail-action-row{flex-wrap:wrap;}
+  .btn-detail-buy{padding:12px var(--sp-4);font-size:14px;}
+  .materials-grid{grid-template-columns:1fr;}
+
+  /* ── 장바구니 ── */
+  .cart-book-thumb{width:44px;height:58px;}
+  .cart-book-title{font-size:13px;}
+  .cart-book-meta{font-size:12px;}
+
+  /* ── 교재활용법 리스트 ── */
+  .hw-list-item{flex-direction:column;gap:10px;}
+  .hw-list-thumb{width:100%;height:160px;}
+  .hw-list-views{margin-left:0;padding-left:0;}
+
+  /* ── 큐레이션 카드 그리드 ── */
+  .cur-grid{grid-template-columns:1fr;}
+
+  /* ── 온라인어휘학습기 위저드 ── */
+  .vwiz-books{flex-wrap:wrap;justify-content:center;}
+  .vwiz-book-slot{width:130px;height:175px;}
+  .vwiz-body{padding:20px 16px;}
+  .vwiz-type-btns{flex-direction:column;gap:8px;}
+  .vwiz-type-btn{padding:14px 24px;}
+
+  /* ── 이벤트 배너 ── */
+  .event-half{padding:20px 16px;}
+
+  /* ── 학습자료 페이지 Study 탭 ── */
+  .study-tabs{gap:6px;}
+  .study-tab{padding:10px 16px;font-size:13px;}
+
+  /* ── 푸터 ── */
+  .footer-corp{flex-direction:column;gap:14px;padding:18px 0 20px;}
+  .footer-nav{gap:0;padding:10px 0;}
+  .footer-nav-link{font-size:12px;padding:0 8px;}
+  .footer-info p{font-size:11.5px;line-height:1.9;}
+
+  /* ── 이미지 overflow 방지 (전역) ── */
+  img{max-width:100%;height:auto;}
 }
