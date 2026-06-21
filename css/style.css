@@ -2449,4 +2449,20 @@ span.gnb-link{cursor:default;}
 
   /* ── 이미지 overflow 방지 (전역) ── */
   img{max-width:100%;height:auto;}
+
+  /* ── 책 카드: 출판사·날짜 숨김 ── */
+  .book-list-meta{display:none;}
+
+  /* ── 책 카드 크기 축소 ── */
+  .book-thumb{padding-top:85%;}
+  .book-title{font-size:13px;}
+  .book-cat-tag{font-size:10px;}
+  .book-author{display:none;}
+  .book-price{margin-top:2px;}
+  .price-sale{font-size:13px;}
+  .price-original,.price-rate{font-size:10px;}
+  .mat-pill{font-size:10px;padding:1px 6px;}
+  .book-info{padding:var(--sp-1) var(--sp-2) var(--sp-1);}
+  .book-mat-icon-row{gap:6px;padding-top:5px;}
+  .mat-icon-item{font-size:11px;}
 }
