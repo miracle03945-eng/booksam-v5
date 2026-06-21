@@ -870,6 +870,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
       }
     }, {passive: true});
+
+    // 모바일: span.gnb-link(초등·중학·고등)는 <a>가 아니라 클릭 무반응
+    // → data-cat 값으로 books.html로 직접 이동
+    document.querySelectorAll('.gnb-item').forEach(item => {
+      const link = item.querySelector('.gnb-link');
+      if (!link || link.tagName === 'A') return; // 이미 <a>면 스킵
+      const cat = item.dataset.cat;
+      if (!cat) return;
+      link.style.cursor = 'pointer';
+      link.addEventListener('click', () => {
+        if (window.innerWidth > 768) return;
+        location.href = `books.html?cat=${cat}`;
+      });
+    });
   }
 
   // (구버전 메가메뉴 코드 — 삭제 예정 자리표시자)
