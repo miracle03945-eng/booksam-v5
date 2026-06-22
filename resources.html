@@ -19,6 +19,13 @@
       .topbar-mypage-btn,.header-util-links a[href="customer.html"]{display:none !important;}
     }
 
+    /* ── 교재 자료실 페이지네이션 + 하단 버튼 ── */
+    @media(max-width:768px){
+      .mat-bulk-btns{display:none !important;}
+      #matPagination{flex-wrap:wrap !important;gap:2px !important;justify-content:center !important;}
+      #matPagination .page-btn{width:22px !important;height:22px !important;font-size:10px !important;}
+    }
+
     /* ── 교재 자료실 테이블 모바일 ── */
     @media(max-width:768px){
       /* 헤더 숨김 */
