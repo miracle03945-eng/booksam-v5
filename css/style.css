@@ -2480,10 +2480,24 @@ span.gnb-link{cursor:default;}
     overflow:hidden !important;
   }
   .mega-col .mega-group-title,
+  .mega-col .mega-sub-link,
+  .mega-col .dropdown-body:not(:has(.mega-sub-link)) .mega-group-title{
+    font-size:10px !important;
+    white-space:normal !important;
+    word-break:keep-all !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    font-weight:500 !important;
+    padding:4px 0 !important;
+    margin-top:0 !important;
+  }
+  .mega-col .mega-group-title{
+    font-weight:700 !important;
+    color:#555 !important;
+    border-bottom:1px solid #eee !important;
+  }
   .mega-col .mega-sub-link{
-    white-space:nowrap !important;
-    overflow:hidden !important;
-    text-overflow:ellipsis !important;
+    padding:2px 0 2px 8px !important;
   }
   .mega-col:nth-child(3n){border-right:none !important;}
   .mega-col-title{
