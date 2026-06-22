@@ -6,6 +6,19 @@
   <title>자료실 - 북샘</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    /* ── 헤더 (자료실): 메인과 동일하게 ── */
+    @media(max-width:768px){
+      .search-series-group{display:none !important;}
+      .stg-btn{font-size:9px !important;padding:2px 5px !important;}
+      .header-util-links{
+        display:flex !important;position:static !important;transform:none !important;
+        margin-left:auto !important;flex-shrink:0;gap:0;
+      }
+      .header-util-links .util-link{font-size:11px !important;padding:0 7px !important;border-right:1px solid #e0e0e0;}
+      .header-util-links .util-link:last-child{border-right:none;}
+      .topbar-mypage-btn,.header-util-links a[href="customer.html"]{display:none !important;}
+    }
+
     /* ── 교재 자료실 테이블 모바일 ── */
     @media(max-width:768px){
       /* 헤더 숨김 */
@@ -38,12 +51,12 @@
       .mat-book-desc{display:none !important;}
       .mat-book-tags{display:none !important;}
 
-      /* 자료명 열: 배지 + 이름 */
+      /* 자료명 열: 고정 너비로 일관된 정렬 */
       .mat-col-res{
         flex-shrink:0 !important;
+        width:70px !important;
         display:flex !important;flex-direction:column !important;
         align-items:flex-start !important;gap:3px !important;
-        max-width:72px !important;
         padding:0 !important;
       }
       .mat-res-name{font-size:10px;color:var(--muted);
@@ -271,7 +284,6 @@
           <span class="mat-type-label">자료유형</span>
           <div class="mat-type-pills">
             <button class="mat-type-pill active" onclick="setMatType(this,'')">전체</button>
-            <button class="mat-type-pill" onclick="setMatType(this,'MP3')">MP3 바로 듣기</button>
             <button class="mat-type-pill" onclick="setMatType(this,'정오표')">정오표</button>
             <button class="mat-type-pill" onclick="setMatType(this,'정답지')">정답 및 해석</button>
             <button class="mat-type-pill mat-type-pill-login" id="matPillMp3File" onclick="setMatType(this,'MP3파일')">

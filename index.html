@@ -241,15 +241,16 @@
       font-size: 15px; font-weight: 600; text-align: center; line-height: 1.4; color: inherit;
     }
     @media(max-width:768px){
-      /* 3. util-bar 검색창·사이트 토글 숨김 */
+      /* 검색창 숨김, 참고서/어학수험서 토글 소형화 */
       .search-series-group{display:none !important;}
-      .site-toggle{display:none !important;}
+      .stg-btn{font-size:9px !important;padding:2px 5px !important;}
 
-      /* 3. 로그인/회원가입 버튼 표시 (우측) */
+      /* 로그인/회원가입 버튼 오른쪽 끝 배치 */
       .header-util-links{
         display:flex !important;
         position:static !important;
         transform:none !important;
+        margin-left:auto !important;
         flex-shrink:0;
         gap:0;
       }
@@ -259,14 +260,13 @@
         border-right:1px solid #e0e0e0;
       }
       .header-util-links .util-link:last-child{border-right:none;}
-      /* 고객센터·마이페이지 숨김 */
       .topbar-mypage-btn,.header-util-links a[href="customer.html"]{display:none !important;}
 
-      /* 4. 바로가기 메뉴 글씨 축소 */
-      .shortcut-item{padding:14px 4px 12px;gap:6px;}
+      /* 바로가기 글씨 축소 — "온라인어휘학습기" 한 줄 맞춤 */
+      .shortcut-item{padding:14px 2px 12px;gap:6px;}
       .shortcut-icon{width:44px;height:44px;border-radius:14px;}
       .shortcut-icon svg{width:22px;height:22px;}
-      .shortcut-label{font-size:9.5px;line-height:1.3;text-align:center;}
+      .shortcut-label{font-size:8px;letter-spacing:-0.3px;line-height:1.3;text-align:center;}
     }
 
     /* ─── Hero Slider ─── */

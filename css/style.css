@@ -2374,9 +2374,9 @@ span.gnb-link{cursor:default;}
   .container{padding:0 var(--sp-3);}
 
   /* ── 헤더 util-bar ── */
-  .util-bar-inner{height:56px;gap:10px;padding:0 10px;}
-  .ybm-mark{height:44px!important;}
-  .stg-btn{padding:3px 8px;font-size:10px;}
+  .util-bar-inner{height:56px;gap:6px;padding:0 10px;}
+  .ybm-mark{height:38px!important;}
+  .stg-btn{padding:2px 5px;font-size:9px;}
 
   /* ── 섹션 간격 ── */
   .section{padding:var(--sp-5) 0;}
@@ -2465,4 +2465,45 @@ span.gnb-link{cursor:default;}
   .book-info{padding:var(--sp-1) var(--sp-2) var(--sp-1);}
   .book-mat-icon-row{gap:6px;padding-top:5px;}
   .mat-icon-item{font-size:11px;}
+
+  /* ── 전체 카테고리 메가메뉴: 모바일 한눈에 보기 ── */
+  .mega-menu-inner{
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:0 !important;
+    padding:0 !important;
+  }
+  .mega-col{
+    padding:10px 10px 12px !important;
+    border-bottom:1px solid #f0f0f0 !important;
+    border-right:1px solid #f0f0f0 !important;
+  }
+  .mega-col:nth-child(3n){border-right:none !important;}
+  .mega-col-title{
+    font-size:11px !important;
+    padding-bottom:6px !important;
+    margin-bottom:4px !important;
+    gap:3px !important;
+  }
+  .mega-col-title span{font-size:13px !important;}
+  .mega-col .mega-group-title{
+    font-size:11px !important;
+    padding:3px 0 !important;
+    margin-top:3px !important;
+    letter-spacing:0 !important;
+  }
+  .mega-col .mega-sub-link{
+    font-size:10px !important;
+    padding:2px 8px !important;
+    line-height:1.3 !important;
+  }
+  .mega-col .gnb-subflyout{display:none !important;}
+  .mega-footer{
+    padding:8px 10px !important;
+    gap:4px !important;
+    flex-wrap:wrap !important;
+  }
+  .mega-footer-link{
+    font-size:10px !important;
+    padding:4px 6px !important;
+  }
 }
