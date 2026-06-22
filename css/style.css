@@ -2473,9 +2473,17 @@ span.gnb-link{cursor:default;}
     padding:0 !important;
   }
   .mega-col{
-    padding:10px 10px 12px !important;
+    padding:10px 8px 12px !important;
     border-bottom:1px solid #f0f0f0 !important;
     border-right:1px solid #f0f0f0 !important;
+    min-width:0 !important;
+    overflow:hidden !important;
+  }
+  .mega-col .mega-group-title,
+  .mega-col .mega-sub-link{
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
   }
   .mega-col:nth-child(3n){border-right:none !important;}
   .mega-col-title{

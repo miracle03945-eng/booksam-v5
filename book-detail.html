@@ -8,10 +8,10 @@
   <style>
     /* ── book-detail.html 모바일 전용 ── */
     @media(max-width:768px){
-      /* 1. 책 이미지 축소 (col 너비를 제한해 padding-top% 계산 기준 축소) */
-      .detail-cover-col{max-width:160px;margin-left:auto;margin-right:auto;}
-      .detail-cover-wrap{max-width:160px;}
-      .detail-cover-btns{max-width:160px;margin:0 auto;}
+      /* 1. 책 커버 크기 (explicit width로 flex shrink 방지) */
+      .detail-cover-col{width:220px !important;align-self:center;}
+      .detail-cover-wrap{max-width:220px;}
+      .detail-cover-btns{max-width:220px;margin:0 auto;}
 
       /* 3. 책 태그 숨김 */
       .detail-tags{display:none !important;}
