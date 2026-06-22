@@ -6,6 +6,16 @@
   <title>도서 상세 - 북샘</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    /* ── book-detail.html 모바일 전용 ── */
+    @media(max-width:768px){
+      /* 1. 책 이미지 축소 (col 너비를 제한해 padding-top% 계산 기준 축소) */
+      .detail-cover-col{max-width:160px;margin-left:auto;margin-right:auto;}
+      .detail-cover-wrap{max-width:160px;}
+      .detail-cover-btns{max-width:160px;margin:0 auto;}
+
+      /* 3. 책 태그 숨김 */
+      .detail-tags{display:none !important;}
+    }
     /* ── Unit별 MP3 플레이어 ── */
     .mp3-unit-modal {
       background: #fff;
@@ -407,6 +417,19 @@ const MAT_ICONS = {
 };
 
 const DL_ICON = `<svg class="mat-dl-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+
+// ── 공유하기 ──
+function shareBook() {
+  const url  = location.href;
+  const title = book ? book.title : document.title;
+  if (navigator.share) {
+    navigator.share({ title, url }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(url)
+      .then(() => showToast('링크가 복사됐습니다.'))
+      .catch(() => showToast('공유가 지원되지 않는 환경입니다.'));
+  }
+}
 
 // ── 토스트 ──
 function showToast(msg) {
@@ -893,7 +916,7 @@ if (!book) {
         <div class="detail-cover-wrap">${coverContent}</div>
         <div class="detail-cover-btns">
           <button class="cover-btn" onclick="showToast('미리보기 서비스 준비 중입니다.')">미리보기</button>
-          <button class="cover-btn" onclick="showToast('크게보기 서비스 준비 중입니다.')">크게보기</button>
+          <button class="cover-btn" onclick="shareBook()">공유하기</button>
         </div>
       </div>
 
