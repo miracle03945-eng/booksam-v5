@@ -78,10 +78,35 @@
       .event-half{padding:24px 20px;}
       .event-title{font-size:16px;}
       .new-rank-grid{grid-template-columns:1fr !important;}
+
+      /* 인기 교재 — 가로 스크롤 캐러셀 (모바일 전용) */
+      .best-cat-books{
+        display:flex !important;
+        flex-direction:row !important;
+        grid-template-columns:unset !important;
+        overflow-x:auto;
+        overflow-y:hidden;
+        gap:12px !important;
+        padding-bottom:10px;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        /* 스크롤바 숨김 */
+        scrollbar-width:none;
+        -ms-overflow-style:none;
+      }
+      .best-cat-books::-webkit-scrollbar{display:none;}
+      .best-cat-books .book-card{
+        flex:0 0 136px;
+        width:136px;
+        scroll-snap-align:start;
+      }
+      /* 책 표지 비율 유지 */
+      .best-cat-books .book-thumb{padding-top:130%;}
     }
     @media(max-width:480px){
       .rank-item{gap:10px;}
       .rank-thumb{width:36px;height:48px;}
+      .best-cat-books .book-card{flex:0 0 120px;width:120px;}
     }
 
     /* 인기교재 영역: 자료다운로드·관심교재 버튼 숨김 */
