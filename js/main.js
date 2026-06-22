@@ -871,19 +871,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, {passive: true});
 
-    // 모바일: span.gnb-link(초등·중학·고등)는 <a>가 아니라 클릭 무반응
-    // → data-cat 값으로 books.html로 직접 이동
+    // 모바일: GNB 각 메뉴 클릭 → 드롭다운 토글
     document.querySelectorAll('.gnb-item').forEach(item => {
-      const link = item.querySelector('.gnb-link');
-      if (!link || link.tagName === 'A') return; // 이미 <a>면 스킵
-      const cat = item.dataset.cat;
-      if (!cat) return;
+      const link = item.querySelector(':scope > .gnb-link');
+      if (!link) return;
       link.style.cursor = 'pointer';
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         if (window.innerWidth > 768) return;
-        location.href = `books.html?cat=${cat}`;
+        e.preventDefault();
+        const dd = item.querySelector(':scope > .gnb-dropdown');
+        if (!dd) return;
+        const isOpen = item.classList.contains('open');
+        // 다른 열린 드롭다운 닫기
+        document.querySelectorAll('.gnb-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) {
+          item.classList.add('open');
+          // GNB 바 하단에 정확히 붙이기
+          dd.style.top = gnbBar.getBoundingClientRect().bottom + 'px';
+        }
       });
     });
+    // 드롭다운 외부 탭 시 닫기
+    document.addEventListener('touchstart', (e) => {
+      if (window.innerWidth > 768) return;
+      if (!e.target.closest('.gnb-item') && !e.target.closest('.gnb-dropdown')) {
+        document.querySelectorAll('.gnb-item.open').forEach(i => i.classList.remove('open'));
+      }
+    }, {passive: true});
   }
 
   // (구버전 메가메뉴 코드 — 삭제 예정 자리표시자)
